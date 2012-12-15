@@ -18,11 +18,14 @@ $(document).ready(function() {
    function input(keyCode) {
       if (selectedBox != null && keyCode >= 49 && keyCode <= 57) {
          $(selectedBox).text(-1 * (48 - keyCode));
-         checkError(selectedBox);
+         if (hasError(selectedBox))
+            $(selectedBox).addClass("error");
+         else
+            $(selectedBox).removeClass("error");
       }
    }
 
-   function checkError(box) {
+   function hasError(box) {
       var value = parseInt($(box).text());
 
       // check row
@@ -30,8 +33,7 @@ $(document).ready(function() {
       for (var x = 9*row; x < 9 * (row+1); x++) {
          if (x == $(box).attr("index")) continue;
          if ($('p.[index="' + x + '"]').text() == value) {
-            $(box).addClass("error");
-            return;
+            return true;
          }
       }
 
@@ -40,8 +42,7 @@ $(document).ready(function() {
       for (var x = col; x < 9*9 + col; x+=9) {
          if (x == $(box).attr("index")) continue;
          if ($('p.[index="' + x + '"]').text() == value) {
-            $(box).addClass("error");
-            return;
+            return true;
          }
       }
 
@@ -52,12 +53,11 @@ $(document).ready(function() {
          for (var c = leftOfBox; c < leftOfBox + 3; c++) {
             if (9*r + c == $(box).attr("index")) continue;
             if ($('p.[index="' + (9*r + c) + '"]').text() == value) {
-               $(box).addClass("error");
-               return;
+               return true;
             }
          }
       }
-      $(box).removeClass("error");
+      return false;
    }
 
 });
