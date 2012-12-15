@@ -1,5 +1,7 @@
 body {
    margin: 0px;
+   text-align: center;
+   font-family: Arial, sans-serif;
 }
 
 #board {
@@ -23,10 +25,8 @@ body {
    width: 40px;
    height: 40px;
    line-height: 40px;
-   text-align: center;
-   border: 1px solid orange;
+   border: 1px solid #FFAA00;
    margin: -1px 0 0 -1px;
-   font-family: Arial, sans-serif;
    font-size: 30px;
    float: left;
 }
@@ -56,4 +56,17 @@ body {
  * this document. That's probably bad... */
 .largeBox p.error.selected {
    background-color: #FF8888;
+}
+
+#button {
+   width: 200px;
+   margin: 10px auto;
+   padding: 10px;
+   background-color: #FFAA00;
+   -webkit-border-radius: 5px;
+   cursor: pointer;
+}
+
+#button:hover {
+   background-color: #FFCC22;
 }
