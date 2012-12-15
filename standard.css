@@ -35,6 +35,10 @@ body {
    background-color: #CCC;
 }
 
+.largeBox p.error {
+   background-color: #FFAAAA;
+}
+
 .largeBox p:hover {
    background-color: #EEE;
 }
@@ -42,4 +46,14 @@ body {
 /* TODO: fix this, it's a little hack-y */
 .largeBox p.selected:hover {
    background-color: #CCC;
+}
+
+.largeBox p.error {
+   background-color: #FFAAAA;
+}
+
+/* TODO: note that this style vs. selected:hover depends on ordering within
+ * this document. That's probably bad... */
+.largeBox p.error.selected {
+   background-color: #FF8888;
 }
