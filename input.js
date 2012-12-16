@@ -6,6 +6,10 @@ $(document).ready(function() {
    });
 
    $(document).on("keydown", function(e) {
+      // prevent navigating backwards in browser history using the backspace key
+      if (e.keyCode == 8)
+         e.preventDefault(); 
+
       input(e.keyCode);
    });
 
@@ -17,12 +21,17 @@ $(document).ready(function() {
    }
 
    function input(keyCode) {
-      if ($selectedBox != null && keyCode >= 49 && keyCode <= 57) {
-         $selectedBox.text(-1 * (48 - keyCode));
-         if (hasError($selectedBox))
-            $selectedBox.addClass("error");
-         else
-            $selectedBox.removeClass("error");
+      if ($selectedBox != null) {
+         if (keyCode == 8) { // backspace
+            $selectedBox.text("").removeClass("error");
+         }
+         else if (keyCode >= 49 && keyCode <= 57) { // a number key
+            $selectedBox.text(-1 * (48 - keyCode));
+            if (hasError($selectedBox))
+               $selectedBox.addClass("error");
+            else
+               $selectedBox.removeClass("error");
+         }
       }
    }
 
