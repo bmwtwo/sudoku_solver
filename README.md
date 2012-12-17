@@ -2,12 +2,15 @@
 
 ## Overview
 Sudoku Solver uses a simple algorithm consisting of recursion and backtracking,
-so it can take several seconds to solve a puzzle. However, I'm planning to
-implement an animation of the different numbers the algorithm is plugging
-into the board as it tries to find the solution, so that should make the wait
-more interesting.  I haven't finished the animation yet though, since it seems
-that recursion and JavaScript's setTimeout method (which I was planning to use
-in the animation) don't like to play nicely with each other.
+so it can take a while to solve a puzzle. This version can actually take several
+minutes, as it animates every step of the algorithm's progress, but without
+animation it takes only seconds. I'm planning to add options to speed up or
+turn off the animation, since it takes so long. My current solution actually
+uses a stack instead of direct recursion. While I think it makes the code
+slightly harder to read, it made it easier to animate, since recursion and
+JavaScript's setTimeout method don't like to play nicely with each other. My
+previous recursive solution can be found on the "recursive" branch of this
+project.
 
 The program will also highlight an number in red if you enter a duplicate in a
 row, column, or 3x3 box. It doesn't (yet) perform real-time checks for more
