@@ -2,12 +2,17 @@
    <head>
       <title>Sudoku Solver</title>
       <link rel="stylesheet" type="text/css" href="standard.css" />
+      <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" />
+
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
       <script type="text/javascript" src="input.js" /></script>
       <script type="text/javascript" src="solve.js"></script>
    </head>
    <body>
       <!-- TODO: consider creating board in JS-->
+      <p class="sliderText">Animation speed: <span>50</span>%</p>
+      <div id="slider"></div>
       <div id="board">
          <div class="largeBox">
             <p index="0"></p>

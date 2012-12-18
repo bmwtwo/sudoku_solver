@@ -1,5 +1,15 @@
+var delay = 50;          // how slowly the simulation should run
+var $selectedBox = null; // box currently selected for text input
+
 $(document).ready(function() {
-   var $selectedBox = null;
+
+   $("#slider").slider({
+      value: 50,
+      slide: function() { performSliderUpdates() },
+      // for some reason, "slide" alone is not sufficient to reach the
+      // ends of the slider
+      stop: function() { performSliderUpdates() }
+   });
 
    $(".largeBox p").on("click", function() {
       toggleSelection(this);
@@ -13,29 +23,35 @@ $(document).ready(function() {
       input(e.keyCode);
    });
 
-   function toggleSelection(box) {
-      if ($selectedBox != null)
-         $selectedBox.removeClass("selected");
-      $(box).addClass("selected");
-      $selectedBox = $(box);
-   }
+});
 
-   function input(keyCode) {
-      if ($selectedBox != null) {
-         if (keyCode == 8) { // backspace
-            $selectedBox.text("").removeClass("error");
-         }
-         else if (keyCode >= 49 && keyCode <= 57) { // a number key
-            $selectedBox.text(-1 * (48 - keyCode));
-            if (hasError($selectedBox))
-               $selectedBox.addClass("error");
-            else
-               $selectedBox.removeClass("error");
-         }
+function performSliderUpdates() {
+   var newSpeed = $("#slider").slider("option", "value");
+   $(".sliderText span").text(newSpeed);
+   delay = 100 - newSpeed;
+}
+   
+function toggleSelection(box) {
+   if ($selectedBox != null)
+      $selectedBox.removeClass("selected");
+   $(box).addClass("selected");
+   $selectedBox = $(box);
+}
+
+function input(keyCode) {
+   if ($selectedBox != null) {
+      if (keyCode == 8) { // backspace
+         $selectedBox.text("").removeClass("error");
+      }
+      else if (keyCode >= 49 && keyCode <= 57) { // a number key
+         $selectedBox.text(-1 * (48 - keyCode));
+         if (hasError($selectedBox))
+            $selectedBox.addClass("error");
+         else
+            $selectedBox.removeClass("error");
       }
    }
-
-});
+}
 
 function hasError($box) {
    var value = parseInt($box.text());

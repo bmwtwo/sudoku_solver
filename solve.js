@@ -1,7 +1,6 @@
 $(document).ready(function() {
    var stack;      // store state variables for recursion
    var solvable;   // return value for whether the board was solvable
-   var delay = 5; // how slowly the simulation should run
    
    $("#button").on("click", function() {
       stack = new Array();
@@ -76,6 +75,6 @@ $(document).ready(function() {
       state["firstTime"] = true;
       state["gridLocation"] = gridLocation + 1;
       stack.push(state);
-      setTimeout(function() { checkStack() }, 10);
+      setTimeout(function() { checkStack() }, delay);
    }
 });
