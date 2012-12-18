@@ -36,7 +36,7 @@ $(document).ready(function() {
          return;
       }
 
-      var $box = $('p.[index="' + state["gridLocation"] + '"]');
+      var $box = $('p[index="' + state["gridLocation"] + '"]');
 
       if (state["numberToTry"] == 10) {
          // no number worked in this box. Return to a previous box to try new

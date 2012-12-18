@@ -44,7 +44,7 @@ function hasError($box) {
    var row = Math.floor(parseInt($box.attr("index")) / 9);
    for (var x = 9*row; x < 9 * (row+1); x++) {
       if (x == $box.attr("index")) continue;
-      if ($('p.[index="' + x + '"]').text() == value) {
+      if ($('p[index="' + x + '"]').text() == value) {
          return true;
       }
    }
@@ -53,7 +53,7 @@ function hasError($box) {
    var col = Math.floor(parseInt($box.attr("index")) % 9);
    for (var x = col; x < 9*9 + col; x+=9) {
       if (x == $box.attr("index")) continue;
-      if ($('p.[index="' + x + '"]').text() == value) {
+      if ($('p[index="' + x + '"]').text() == value) {
          return true;
       }
    }
@@ -64,7 +64,7 @@ function hasError($box) {
    for (var r = topOfBox; r < topOfBox + 3; r++) {
       for (var c = leftOfBox; c < leftOfBox + 3; c++) {
          if (9*r + c == $box.attr("index")) continue;
-         if ($('p.[index="' + (9*r + c) + '"]').text() == value) {
+         if ($('p[index="' + (9*r + c) + '"]').text() == value) {
             return true;
          }
       }
